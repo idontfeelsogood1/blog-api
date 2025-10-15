@@ -10,7 +10,7 @@ async function getUser(userId) {
             }
         })
     } catch(err) {
-        console.log("Error in getUser: ", err)
+        console.log("Error in getUser: ")
         throw new Error(err)
     }
 }
@@ -19,11 +19,13 @@ async function addUser(username, password) {
     try {
         const hash = await bcrypt.hash(password, 10)
         await prisma.user.create({
-            username: username,
-            hash: hash,
+            data: {
+                username: username,
+                hash: hash,
+            }
         })
     } catch(err) {
-        console.log("Error in addUser: ", err)
+        console.log("Error in addUser: ")
         throw new Error(err)
     }
 }
@@ -36,7 +38,7 @@ async function getUserByUsername(username) {
             }
         })
     } catch(err) {
-        console.log("Error in getUserByUsername: ", err)
+        console.log("Error in getUserByUsername: ")
         throw new Error(err) 
     }
 }
