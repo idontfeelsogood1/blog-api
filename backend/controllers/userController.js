@@ -25,7 +25,12 @@ async function loginUserPost(req, res) {
             return res.sendStatus(401)
         } 
         // GENERATE TOKEN AND SEND BACK TO CLIENT
-        const token = jwt.sign(user, process.env.SECRET)
+        const signOjb = {
+            id: user.id,
+            username: user.username,
+            isWriter: user.isWriter,
+        }
+        const token = jwt.sign(signOjb, process.env.SECRET)
         res.status(200).json({ token })
     } catch(err) {
         console.log(err)
