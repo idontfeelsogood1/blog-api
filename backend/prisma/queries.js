@@ -43,8 +43,32 @@ async function getUserByUsername(username) {
     }
 }
 
+async function getAllBlog() {
+    try {
+        return await prisma.blog.findMany({})
+    } catch(err) {
+        console.log("Error at getAllBlog: ")
+        throw new Error(err)
+    }
+}
+
+async function getAllPublishedBlog() {
+    try {
+        return await prisma.blog.findMany({
+            where: {
+                published: true,
+            }
+        })
+    } catch(err) {
+        console.log("Error at getAllPublishedBlog: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
     getUserByUsername,
+    getAllBlog,
+    getAllPublishedBlog,
 }
