@@ -3,10 +3,6 @@ const router = new Router()
 const blogController = require('../controllers/blogController')
 const passport = require('passport')
 
-// PUBLIC ROUTES
-router.get('/', blogController.allPublishedBlogGet)
-router.get('/:blogId', blogController.publishedBlogWithEverythingGet)
-
 // PROTECTED ROUTES req.user.isWriter
 const blogProtectedRouter = require('./blogProtectedRouter')
 router.use('/protected', passport.authenticate('jwt', { session: false }), 
@@ -18,6 +14,10 @@ router.use('/protected', passport.authenticate('jwt', { session: false }),
     },
     blogProtectedRouter
 )
+
+// PUBLIC ROUTES
+router.get('/', blogController.allPublishedBlogGet)
+router.get('/:blogId', blogController.publishedBlogWithEverythingGet)
 
 // Not found
 router.use((req, res) => {
