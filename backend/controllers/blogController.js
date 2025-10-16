@@ -31,9 +31,20 @@ async function publishedBlogWithEverythingGet(req, res) {
     }
 }
 
+async function blogWithEverythingGet(req, res) {
+    try {
+        const blogId = parseInt(req.params.blogId)
+        const blogs = await db.getBlogWithEverything(blogId)
+        res.status(200).json({ blogs: blogs })
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
 
 module.exports = {
     allBlogGet,
     allPublishedBlogGet,
     publishedBlogWithEverythingGet,
+    blogWithEverythingGet,
 }
