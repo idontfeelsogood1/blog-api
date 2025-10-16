@@ -9,7 +9,7 @@ router.post('/register', userController.registerUserPost)
 router.post('/login', userController.loginUserPost)
 
 // Not found
-router.use('/', (req, res) => {
+router.use((req, res) => {
     return res.sendStatus(404)
 })
 

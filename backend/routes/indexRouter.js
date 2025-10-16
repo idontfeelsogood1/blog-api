@@ -10,7 +10,12 @@ const blogRouter = require('./blogRouter')
 router.use('/blog', blogRouter)
 
 // Comment resource
-const commentRouter = require('./commentRouter')
-router.use('/comment', commentRouter)
+// const commentRouter = require('./commentRouter')
+// router.use('/comment', commentRouter)
+
+// Not found
+router.use((req, res) => {
+    return res.sendStatus(404)
+})
 
 module.exports = router
