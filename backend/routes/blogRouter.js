@@ -4,8 +4,8 @@ const blogController = require('../controllers/blogController')
 const passport = require('passport')
 
 // PUBLIC ROUTES
-router.get('/', blogController.allPublishedBlogGet)
-router.get('/:blogId', blogController.publishedBlogWithCommentsGet)
+// router.get('/', blogController.allPublishedBlogGet)
+// router.get('/:blogId', blogController.publishedBlogWithCommentsGet)
 
 // PROTECTED ROUTES req.user.isWriter
 const blogProtectedRouter = require('./blogProtectedRouter')
