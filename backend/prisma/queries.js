@@ -70,6 +70,7 @@ async function getPublishedBlogWithEverything(blogId) {
         return await prisma.blog.findFirst({
             where: {
                 id: blogId,
+                published: true,
             },
             include: {
                 author: {
