@@ -11,7 +11,7 @@ router.use('/blog', blogRouter)
 
 // Comment resource
 // const commentRouter = require('./commentRouter')
-// router.use('/comment', commentRouter)
+// router.use('/blog/comment', commentRouter)
 
 // Not found
 router.use((req, res) => {
