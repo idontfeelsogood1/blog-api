@@ -2,8 +2,18 @@ const db = require('../prisma/queries.js')
 
 async function allBlogGet(req, res) {
     try {
-        const blog = await db.getAllPublishedBlog()
-        res.json({ blogs: blog })
+        const blogs = await db.getAllBlog()
+        res.status(200).json({ blogs: blogs })
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
+async function allPublishedBlogGet(req, res) {
+    try {
+        const publishedBlogs = await db.getAllPublishedBlog()
+        res.status(200).json({ blogs: publishedBlogs })
     } catch(err) {
         console.log(err)
         res.sendStatus(500)
@@ -12,4 +22,5 @@ async function allBlogGet(req, res) {
 
 module.exports = {
     allBlogGet,
+    allPublishedBlogGet,
 }
