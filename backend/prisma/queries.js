@@ -95,6 +95,35 @@ async function getPublishedBlogWithEverything(blogId) {
     }
 }
 
+async function getBlogWithEverything(blogId) {
+    try {
+        return await prisma.blog.findFirst({
+            where: {
+                id: blogId,
+            },
+            include: {
+                author: {
+                    select: {
+                        username: true,
+                    }
+                },
+                comments: {
+                    include: {
+                        user: {
+                            select: {
+                                username: true,
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    } catch(err) {
+        console.log("Error at getBlogWithEverything: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -102,4 +131,5 @@ module.exports = {
     getAllBlog,
     getAllPublishedBlog,
     getPublishedBlogWithEverything,
+    getBlogWithEverything,
 }
