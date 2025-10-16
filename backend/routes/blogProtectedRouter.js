@@ -4,6 +4,7 @@ const blogController = require('../controllers/blogController')
 
 // Get all blogs
 router.get('/', blogController.allBlogGet)
+// router.get('/:blogId', blogController.blogWithEverythingGet)
 
 // Publish blog
 // router.put('/:blogId/publish', blogController.publishBlogPut)
