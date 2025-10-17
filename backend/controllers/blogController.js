@@ -66,9 +66,9 @@ async function unpublishBlogPut(req, res) {
 
 async function addBlogPost(req, res) {
     try {
-        const userId = req.user.blogId
+        const authorId = req.user.id
         const { title, body } = req.body
-        await db.addBlog(userId, title, body)
+        await db.addBlog(authorId, title, body)
         res.sendStatus(200)
     } catch(err) {
         console.log(err)
