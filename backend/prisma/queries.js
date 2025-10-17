@@ -157,7 +157,7 @@ async function addBlog(authorId, title, body) {
 
 async function addComment(userId, blogId, body) {
     try {
-        await prisma.blog.create({
+        await prisma.comment.create({
             data: {
                 userId: userId,
                 blogId: blogId,
