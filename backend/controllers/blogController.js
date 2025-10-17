@@ -42,9 +42,20 @@ async function blogWithEverythingGet(req, res) {
     }
 }
 
+async function publishBlogPut(req, res) {
+    try {
+        const blogId = parseInt(req.params.blogId)
+        await db.updateBlogPublish(blogId, true)
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)  
+    }
+}
+
 module.exports = {
     allBlogGet,
     allPublishedBlogGet,
     publishedBlogWithEverythingGet,
     blogWithEverythingGet,
+    publishBlogPut,
 }
