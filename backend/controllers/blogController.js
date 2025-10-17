@@ -64,6 +64,17 @@ async function unpublishBlogPut(req, res) {
     }
 }
 
+async function addBlogPost(req, res) {
+    try {
+        const userId = req.user.blogId
+        const { title, body } = req.body
+        await db.addBlog(userId, title, body)
+        res.sendStatus(200)
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)  
+    }
+}
 
 module.exports = {
     allBlogGet,
@@ -71,5 +82,6 @@ module.exports = {
     publishedBlogWithEverythingGet,
     blogWithEverythingGet,
     publishBlogPut,
-    unpublishBlogPut
+    unpublishBlogPut,
+    addBlogPost,
 }
