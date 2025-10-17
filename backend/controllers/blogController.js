@@ -53,10 +53,23 @@ async function publishBlogPut(req, res) {
     }
 }
 
+async function unpublishBlogPut(req, res) {
+    try {
+        const blogId = parseInt(req.params.blogId)
+        await db.updateBlogPublish(blogId, false)
+        res.sendStatus(200)
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)  
+    }
+}
+
+
 module.exports = {
     allBlogGet,
     allPublishedBlogGet,
     publishedBlogWithEverythingGet,
     blogWithEverythingGet,
     publishBlogPut,
+    unpublishBlogPut
 }
