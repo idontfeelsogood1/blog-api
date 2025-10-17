@@ -124,6 +124,22 @@ async function getBlogWithEverything(blogId) {
     }
 }
 
+async function updateBlogPublish(blogId, isPublish) {
+    try {
+        await prisma.blog.update({
+            where: {
+                id: blogId,
+            }, 
+            data: {
+                published: isPublish,
+            }
+        })
+    } catch(err) {
+        console.log("Error at updateBlogPublish: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -132,4 +148,5 @@ module.exports = {
     getAllPublishedBlog,
     getPublishedBlogWithEverything,
     getBlogWithEverything,
+    updateBlogPublish,
 }
