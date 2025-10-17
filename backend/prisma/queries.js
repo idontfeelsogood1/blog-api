@@ -170,6 +170,19 @@ async function addComment(userId, blogId, body) {
     }
 }
 
+async function deleteComment(commentId) {
+    try {
+        await prisma.comment.delete({
+            where: {
+                id: commentId,
+            }
+        })
+    } catch(err) {
+        console.log("Error at deleteComment: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -181,4 +194,5 @@ module.exports = {
     updateBlogPublish,
     addBlog,
     addComment,
+    deleteComment,
 }
