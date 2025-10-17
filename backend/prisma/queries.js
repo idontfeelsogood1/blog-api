@@ -140,6 +140,21 @@ async function updateBlogPublish(blogId, isPublish) {
     }
 }
 
+async function addBlog(authorId, title, body) {
+    try {
+        await prisma.blog.create({
+            data: {
+                authorId: authorId,
+                title: title,
+                body: body,
+            }
+        })
+    } catch(err) {
+        console.log("Error at addBlogPost: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -149,4 +164,5 @@ module.exports = {
     getPublishedBlogWithEverything,
     getBlogWithEverything,
     updateBlogPublish,
+    addBlog,
 }
