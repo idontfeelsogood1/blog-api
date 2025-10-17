@@ -18,6 +18,8 @@ router.use('/protected', passport.authenticate('jwt', { session: false }),
 // PUBLIC ROUTES
 router.get('/', blogController.allPublishedBlogGet)
 router.get('/:blogId', blogController.publishedBlogWithEverythingGet)
+const commentRouter = require('./commentRouter')
+router.use('/:blogId/comment', commentRouter)
 
 // Not found
 router.use((req, res) => {
