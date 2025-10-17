@@ -46,6 +46,7 @@ async function publishBlogPut(req, res) {
     try {
         const blogId = parseInt(req.params.blogId)
         await db.updateBlogPublish(blogId, true)
+        res.sendStatus(200)
     } catch(err) {
         console.log(err)
         res.sendStatus(500)  
