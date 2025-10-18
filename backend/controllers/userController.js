@@ -36,7 +36,20 @@ async function loginUserPost(req, res) {
     }
 }
 
+async function verifyToken(req, res) {
+    try {
+        if (!req.user) {
+            return res.sendStatus(401)
+        }
+        return res.json({ user: req.user })
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
 module.exports = {
     registerUserPost,
     loginUserPost,
+    verifyToken,
 }
