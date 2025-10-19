@@ -1,24 +1,60 @@
 import { Outlet } from 'react-router'
 import { Helmet } from 'react-helmet'
 import Header from './components/Header/Header.jsx'
+import { useState, useEffect } from 'react'
+import { verifyToken } from './api/auth.js'
+
+// const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYwODU0NDUwfQ.VaDTOC4-nTxuM8ICQ69ueQ6_uBEBZiHYTyOne1uf8So"
+// localStorage.setItem("token", token)
+// localStorage.removeItem("token")
 
 function App() {
-  return (
-    <>
-      <Helmet>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Blog Api</title>
-      </Helmet>
-      <Header />
-      <Outlet />
-    </>
-  )
+  const [user, setUser] = useState(null)
+  const [isLoading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function verify() {
+      try {
+        const user = await verifyToken()
+        if (!user) {
+          setUser(null)
+          setLoading(false)
+        } else {
+          setUser(user)
+          setLoading(false)
+          }
+      } catch(err) {
+        console.log("Error at App: ", err)
+      }
+    }
+    verify()
+  } ,[])
+
+  if (isLoading) {
+    return (
+      <>
+        <h1>Loading App</h1>
+      </>
+    )
+  } else {
+      return (
+        <>
+          <Helmet>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Blog Api</title>
+          </Helmet>
+          <Header user={user} />
+          <Outlet context={[user, setUser]} />
+        </>
+      )
+  }
 }
 
 export default App
 
 // App 
+  // Do authorization and keep track if user has logged in or not
   // Contains header
     // Home button Link to "/"
     // About button Link to "/about"
