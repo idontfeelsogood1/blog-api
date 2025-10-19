@@ -11,7 +11,7 @@ router.post('/login', userController.loginUserPost)
 
 // Verify token
 router.get('/verify', passport.authenticate('jwt', { session: false }),
-    userController.verifyToken
+    userController.verifyTokenGet
 )
 
 // Not found
