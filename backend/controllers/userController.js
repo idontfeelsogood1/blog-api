@@ -41,7 +41,7 @@ async function verifyToken(req, res) {
         if (!req.user) {
             return res.sendStatus(401)
         }
-        return res.json({ user: req.user })
+        return res.status(200).json({ user: req.user })
     } catch(err) {
         console.log(err)
         res.sendStatus(500)
