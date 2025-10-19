@@ -11,7 +11,7 @@ const opts = {
 
 const verifyCallback = async (jwt_payload, done) => {
     try {
-        const user = await db.getUser(jwt_payload.id)
+        const user = await db.getUserNoSensitive(jwt_payload.id)
         if (!user) {
             return done(null, false)
         } else {
