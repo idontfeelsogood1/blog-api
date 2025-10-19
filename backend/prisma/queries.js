@@ -183,6 +183,24 @@ async function deleteComment(commentId) {
     }
 }
 
+async function getUserNoSensitive(userId) {
+    try {
+        return await prisma.user.findFirst({
+            where: {
+                id: userId,
+            }, 
+            select: {
+                id: true,
+                username: true,
+                isWriter: true,
+            },
+        })
+    } catch(err) {
+        console.log("Error in getUserNoSensitive: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -195,4 +213,5 @@ module.exports = {
     addBlog,
     addComment,
     deleteComment,
+    getUserNoSensitive
 }
