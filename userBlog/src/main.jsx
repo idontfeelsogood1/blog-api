@@ -9,7 +9,7 @@ import About from './components/About/About.jsx'
 import BlogContainer from './components/BlogContainer/BlogContainer.jsx'
 import Index from './components/Index/Index.jsx'
 import Blog from './components/Blog/Blog.jsx'
-import Error from './components/About/Error.jsx'
+import Error from './components/Error/Error.jsx'
 import Login from './components/Login/Login.jsx'
 import Logout from './components/Logout/Logout.jsx'
 
