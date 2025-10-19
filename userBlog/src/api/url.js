@@ -1,0 +1,1 @@
+export const verifyUrl = "http://localhost:3000/user/verify"
