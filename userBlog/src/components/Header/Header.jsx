@@ -3,7 +3,7 @@ import { Link } from "react-router"
 export default function Header({ user }) {
     return (
         <nav>
-            <Link to="/">Blog API</Link>
+            <Link to="/">User Blog - Blog API</Link>
             <div>
                 <Link to="/about">About</Link>
                 <Link to="/blog">Blog</Link>
