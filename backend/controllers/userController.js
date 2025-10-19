@@ -36,7 +36,7 @@ async function loginUserPost(req, res) {
     }
 }
 
-async function verifyToken(req, res) {
+async function verifyTokenGet(req, res) {
     try {
         if (!req.user) {
             return res.sendStatus(401)
@@ -51,5 +51,5 @@ async function verifyToken(req, res) {
 module.exports = {
     registerUserPost,
     loginUserPost,
-    verifyToken,
+    verifyTokenGet,
 }
