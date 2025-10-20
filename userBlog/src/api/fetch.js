@@ -12,3 +12,16 @@ export async function fetchBlogs() {
         console.log("Error at fetchBlogs: ", err)
     }
 }
+
+export async function fetchBlog(blogId) {
+    try {
+        const response = await fetch(`${blogsUrl}${blogId}`)
+        if (!response.ok) {
+            throw new Error("Blog fetching failed.")
+        }
+        const obj = await response.json()
+        return obj.blogs
+    } catch(err) {
+        console.log("Error at fetchBlog: ", err)
+    }
+}
