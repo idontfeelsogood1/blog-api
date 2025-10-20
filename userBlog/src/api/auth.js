@@ -1,4 +1,4 @@
-import { verifyUrl, loginUrl } from "./url"
+import { verifyUrl, loginUrl, registerUrl } from "./url"
 
 export async function verifyToken() {
     try {
@@ -38,6 +38,26 @@ export async function getToken(username, password) {
         }
         const obj = await response.json()
         return obj.token
+    } catch(err) {
+        console.log("Error at getToken", err)
+    }
+}
+
+export async function registerUser(username, password) {
+    try {
+        const response = await fetch(registerUrl, {
+            method: "POST",
+            body: JSON.stringify({
+                username: username,
+                password: password,
+            }),
+            headers: {
+                "Content-Type": 'application/json',
+            }
+        })
+        if (!response.ok) {
+            throw new Error("Failed to register user")
+        }
     } catch(err) {
         console.log("Error at getToken", err)
     }
