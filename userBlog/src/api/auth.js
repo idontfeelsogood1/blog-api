@@ -1,4 +1,4 @@
-import { verifyUrl } from "./url"
+import { verifyUrl, loginUrl } from "./url"
 
 export async function verifyToken() {
     try {
@@ -18,5 +18,27 @@ export async function verifyToken() {
     } catch(err) {
         console.log("Error at verifyToken: ", err)
         return null
+    }
+}
+
+export async function getToken(username, password) {
+    try {
+        const response = await fetch(loginUrl, {
+            method: "POST",
+            body: JSON.stringify({
+                username: username,
+                password: password,
+            }),
+            headers: {
+                "Content-Type": 'application/json',
+            }
+        })
+        if (!response.ok) {
+            throw new Error("Fetching token failed")
+        }
+        const obj = await response.json()
+        return obj.token
+    } catch(err) {
+        console.log("Error at getToken", err)
     }
 }
