@@ -12,6 +12,7 @@ import Blog from './components/Blog/Blog.jsx'
 import Error from './components/Error/Error.jsx'
 import Login from './components/Login/Login.jsx'
 import Logout from './components/Logout/Logout.jsx'
+import Register from './components/Register/Register.jsx'
 
 let router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ let router = createBrowserRouter([
       {
           path: 'blog/:blogId',
           element: <Blog />
+      },
+      {
+          path: 'register',
+          element: <Register />
       },
       {
         path: 'login',

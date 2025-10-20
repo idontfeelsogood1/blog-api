@@ -4,10 +4,6 @@ import Header from './components/Header/Header.jsx'
 import { useState, useEffect } from 'react'
 import { verifyToken } from './api/auth.js'
 
-// const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYwODU0NDUwfQ.VaDTOC4-nTxuM8ICQ69ueQ6_uBEBZiHYTyOne1uf8So"
-// localStorage.setItem("token", token)
-// localStorage.removeItem("token")
-
 function App() {
   const [user, setUser] = useState(null)
   const [isLoading, setLoading] = useState(true)
