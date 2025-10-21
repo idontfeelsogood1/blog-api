@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router'
 import { Helmet } from 'react-helmet'
 import Header from './components/Header/Header.jsx'
+import Footer from './components/Footer/Footer.jsx'
 import { useState, useEffect } from 'react'
 import { verifyToken } from './api/auth.js'
 
@@ -42,6 +43,7 @@ function App() {
           </Helmet>
           <Header user={user} />
           <Outlet context={[user, setUser]} />
+          <Footer />
         </>
       )
   }
