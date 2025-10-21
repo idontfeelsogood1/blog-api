@@ -1,0 +1,39 @@
+nav {
+    background-color: #f5efe6;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 18px;
+    margin-bottom: 50px;
+}
+
+.indexLink, .link {
+    text-decoration: none;
+    color: black;
+}
+
+.link {
+    font-size: large;
+    color: #6d7275;
+    transition: all 0.2s;
+}
+
+.indexLink {
+    font-weight: 500;
+    font-size: 20.8px;
+}
+
+.linkContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.link:hover {
+    color: black;
+    transform: scale(1.1);
+}

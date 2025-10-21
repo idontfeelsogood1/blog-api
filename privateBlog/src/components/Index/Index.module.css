@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container > h1 {
+    font-size: 33px;
+    text-align: center;
+}
+
+.container > p > a {
+    text-decoration: none;
+    color: #6d94c5;
+}
+
+.container > p > a:hover {
+    text-decoration: underline;
+}
+
+.paragraph {
+    font-size: 18px;
+    font-weight: 500;
+}
+
