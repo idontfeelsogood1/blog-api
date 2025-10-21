@@ -27,6 +27,7 @@ async function loginUserPost(req, res) {
         // GENERATE TOKEN AND SEND BACK TO CLIENT
         const signOjb = {
             id: user.id,
+            isWriter: user.isWriter
         }
         const token = jwt.sign(signOjb, process.env.SECRET)
         res.status(200).json({ token })
