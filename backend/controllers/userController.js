@@ -59,9 +59,21 @@ async function allUserGet(req, res) {
     }
 }
 
+async function userDelete(req, res) {
+    try {
+        const userId = parseInt(req.params.userId)
+        await db.deleteUser(userId)
+        res.sendStatus(200)
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
 module.exports = {
     registerUserPost,
     loginUserPost,
     verifyTokenGet,
-    allUserGet
+    allUserGet,
+    userDelete,
 }
