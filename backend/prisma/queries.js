@@ -225,6 +225,19 @@ async function getAllUser() {
     }
 }
 
+async function deleteUser(userId) {
+    try {
+        await prisma.user.delete({
+            where: {
+                id: userId,
+            },
+        })
+    } catch(err) {
+        console.log("Error in deleteUser: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -239,5 +252,6 @@ module.exports = {
     deleteComment,
     getUserNoSensitive,
     getAllComment,
-    getAllUser
+    getAllUser,
+    deleteUser,
 }
