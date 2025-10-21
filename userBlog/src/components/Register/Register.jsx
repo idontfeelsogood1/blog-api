@@ -6,6 +6,7 @@ export default function Register() {
     const navigate = useNavigate()
 
     function handleSubmit(event) {
+        event.preventDefault()
         const username = event.target.username.value
         const password = event.target.password.value
 
