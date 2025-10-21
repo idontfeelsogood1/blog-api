@@ -24,6 +24,8 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: #e8dfca;
   font-family: "Lexend", sans-serif;
+  display: flex;
+  justify-content: center;
 }
 
 /* 6. Improve media defaults */
@@ -55,4 +57,9 @@ h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+#root {
+  flex: 1;
+  max-width: 800px;
 }
