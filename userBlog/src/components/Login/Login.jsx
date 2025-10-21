@@ -1,6 +1,7 @@
 import { getToken, verifyToken } from "../../api/auth"
 import { useNavigate } from "react-router"
 import { useOutletContext } from "react-router"
+import style from "./Login.module.css"
 
 export default function Login() {
     const navigate = useNavigate()
@@ -29,20 +30,20 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <h1></h1>
+        <div className={style.container}>
             <form onSubmit={handleSubmit}>
+                <h1>Login</h1>
                 <p>
-                    <label htmlFor="username">Username:</label>
+                    <p>Username</p>
                     <input type="text" name="username" id="username" />
                 </p>
                 <p>
-                    <label htmlFor="password">Password:</label>
+                    <p>Password</p>
                     <input type="password" name="password" id="password" />
                 </p>
                 <button type="submit">Login</button>
+                <p>Not a member? <a href="/register">Create an account.</a></p>
             </form>
-            <p>Not a member? <a href="/register">Create an account.</a></p>
         </div>
     )
 }

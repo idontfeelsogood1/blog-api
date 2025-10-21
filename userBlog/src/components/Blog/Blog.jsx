@@ -2,6 +2,7 @@ import { useOutletContext, useParams } from "react-router"
 import { useState, useEffect } from "react"
 import { blogsUrl } from "../../api/url"
 import { fetchBlog } from "../../api/fetch"
+import style from "./Blog.module.css"
 
 export default function Blog() {
     const [blog, setBlog] = useState([])
@@ -48,23 +49,23 @@ export default function Blog() {
 
     if (isLoading) {
         return (
-            <h1>Loading...</h1>
+            <h1 className={style.loading}>Loading...</h1>
         )
     } else {
         const formattedDateBlog = blog.createAt.slice(0, 9)
         return (
-            <div>
-                <div>
-                    <p>{formattedDateBlog}</p>
-                    <p>{blog.title}</p>
-                    <p>By {blog.author.username}</p>
-                    <p>{blog.body}</p>
+            <div className={style.container}>
+                <div className={style.header}>
+                    <p className={style.date}>{formattedDateBlog}</p>
+                    <p className={style.title}>{blog.title}</p>
+                    <p className={style.author}>By {blog.author.username}</p>
+                    <p className={style.body}>{blog.body}</p>
                 </div>
-                <div>
+                <div className={style.commentContainer}>
                     {blog.comments.map((comment) => {
                         const formattedDateComment = comment.createAt.slice(0, 9)
                         return (
-                            <div>
+                            <div className={style.comment}>
                                 <div>
                                     <span>{comment.user.username}</span>
                                     <span> | </span>
@@ -77,15 +78,13 @@ export default function Blog() {
                 </div>
                 {
                     user ? (
-                        <form onSubmit={handleSubmit}>
+                        <form className={style.commentForm} onSubmit={handleSubmit}>
                             <p>Post a comment: </p>
                             <textarea name="body" id="body" placeholder="Comment goes here..."></textarea>
-                            <p>
-                                <button type="submit">Post Comment</button>
-                            </p>
+                            <button type="submit">Post Comment</button>
                         </form>
                     ) : (
-                        <p>Please login to post a comment</p>
+                        <p className={style.loginToPost}>Please login to post a comment</p>
                     )
                 }
             </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { fetchBlogs } from "../../api/fetch"
 import { useNavigate } from "react-router"
+import style from "./BlogContainer.module.css"
 
 export default function BlogContainer() {
     const [blogs, setBlogs] = useState([])
@@ -28,20 +29,20 @@ export default function BlogContainer() {
         return (
             <div>
                 <h1>Blogs</h1>
-                <h4>Loading Blogs...</h4>
+                <h2 className={style.loading}>Loading Blogs...</h2>
             </div>
         )
     } else {
         return (
-            <div>
+            <div className={style.container}>
                 <h1>Blogs</h1>
-                <div>
+                <div className={style.blogContainer}>
                     {blogs.map((blog) => {
                         const formattedDate = blog.createAt.slice(0, 10)
                         return (
-                            <div key={blog.id} onClick={() => {goToBlog(blog.id)}}>
-                                <span>{formattedDate}</span>
-                                <span>{blog.title}</span>
+                            <div className={style.blog} key={blog.id} onClick={() => {goToBlog(blog.id)}}>
+                                <p className={style.date}>{formattedDate}</p>
+                                <p className={style.title}>{blog.title}</p>
                             </div>
                         )
                     })}

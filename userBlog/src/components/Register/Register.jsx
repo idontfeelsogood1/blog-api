@@ -1,5 +1,6 @@
 import { registerUser } from "../../api/auth"
 import { useNavigate } from "react-router"
+import style from "./Register.module.css"
 
 export default function Register() {
     const navigate = useNavigate()
@@ -20,20 +21,20 @@ export default function Register() {
     }
 
     return (
-        <div>
-            <h1></h1>
+        <div className={style.container}>
             <form onSubmit={handleSubmit}>
+                <h1>Register</h1>
                 <p>
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">Username</label>
                     <input type="text" name="username" id="username" />
                 </p>
                 <p>
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password</label>
                     <input type="password" name="password" id="password" />
                 </p>
                 <button type="submit">Register</button>
+                <p><a href="/login">Login</a> if you have an account.</p>
             </form>
-            <a href="/register">Login if you have an account.</a>
         </div>
     )
 }

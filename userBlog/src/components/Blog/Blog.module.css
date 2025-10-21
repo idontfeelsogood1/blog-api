@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.date, .author {
+    color: #6d7275;
+    font-weight: 550;
+}
+
+.title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bolder;
+    font-size: 36px;
+    line-height: 45px;
+}
+
+.body {
+    margin-top: 20px;
+}
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.comment {
+    padding: 10px;
+    border-radius: 4px;
+    border: #b5ae9e 1px solid;
+    background-color: #f5efe6;
+}
+
+.comment > div {
+    color: #6d7275;
+}
+
+.comment > p {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+textarea {
+     width: 100%;
+     padding: 10px;
+     resize: vertical;
+}
+
+button {
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #f5efe6;
+}
+
+button:hover {
+    background-color: bisque;
+}
+
+.commentForm {
+    flex: 1;
+    width: 100%;
+    align-self: center;
+}
+
+.loginToPost, .loading {
+    text-align: center;
+}
