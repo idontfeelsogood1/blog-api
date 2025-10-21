@@ -45,7 +45,15 @@ async function getUserByUsername(username) {
 
 async function getAllBlog() {
     try {
-        return await prisma.blog.findMany({})
+        return await prisma.blog.findMany({
+            include: {
+                author: {
+                    select: {
+                        username: true,
+                    }
+                }
+            }
+        })
     } catch(err) {
         console.log("Error at getAllBlog: ")
         throw new Error(err)
