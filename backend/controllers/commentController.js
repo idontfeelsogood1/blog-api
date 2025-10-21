@@ -24,7 +24,18 @@ async function commentDelete(req, res) {
     }
 }
 
+async function allCommentGet(req, res) {
+    try {
+        const comments = await db.getAllComment()
+        res.status(200).json({ comments })
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
 module.exports = {
     addCommentPost,
     commentDelete,
+    allCommentGet
 }
