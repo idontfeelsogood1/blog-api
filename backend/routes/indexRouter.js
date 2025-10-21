@@ -9,6 +9,10 @@ router.use('/user', userRouter)
 const blogRouter = require('./blogRouter')
 router.use('/blog', blogRouter)
 
+// Comment resource
+const universalCommentRouter = require('./universalCommentRouter')
+router.use('/comment', universalCommentRouter)
+
 // Not found
 router.use((req, res) => {
     return res.sendStatus(404)
