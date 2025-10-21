@@ -201,6 +201,15 @@ async function getUserNoSensitive(userId) {
     }
 }
 
+async function getAllComment() {
+    try {
+        return await prisma.comment.findMany({})
+    } catch(err) {
+        console.log("Error in allCommentGet: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -213,5 +222,6 @@ module.exports = {
     addBlog,
     addComment,
     deleteComment,
-    getUserNoSensitive
+    getUserNoSensitive,
+    getAllComment,
 }
