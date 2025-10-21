@@ -210,6 +210,21 @@ async function getAllComment() {
     }
 }
 
+async function getAllUser() {
+    try {
+        return await prisma.user.findMany({
+            select: {
+                id: true,
+                username: true,
+                isWriter: true,
+            }
+        })
+    } catch(err) {
+        console.log("Error in getAllUser: ")
+        throw new Error(err)
+    }
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -224,4 +239,5 @@ module.exports = {
     deleteComment,
     getUserNoSensitive,
     getAllComment,
+    getAllUser
 }
