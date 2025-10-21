@@ -49,8 +49,19 @@ async function verifyTokenGet(req, res) {
     }
 }
 
+async function allUserGet(req, res) {
+    try {
+        const users = await db.getAllUser()
+        res.status(200).json({ users })
+    } catch(err) {
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
 module.exports = {
     registerUserPost,
     loginUserPost,
     verifyTokenGet,
+    allUserGet
 }
