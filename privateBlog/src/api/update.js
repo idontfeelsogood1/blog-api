@@ -1,4 +1,4 @@
-import { publishUrl, unpublishUrl, addBlogUrl } from "./url.js"
+import { publishUrl, unpublishUrl, addBlogUrl, deleteCommentUrl } from "./url.js"
 
 export async function changeBlogStatus(blogId, hasPublished) {
     try {
@@ -47,5 +47,21 @@ export async function addBlog(title, published, body) {
         }
     } catch(err) {
         console.log("Error at addBlog", err)
+    }
+}
+
+export async function deleteComment(commentId) {
+    try {
+        const response = await fetch(`${deleteCommentUrl}/${commentId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}` 
+            }
+        })
+        if (!response.ok) {
+            throw new Error("Delete comment failed.")
+        }
+    } catch(err) {
+        console.log("Error at deleteComment: ", err)
     }
 }
