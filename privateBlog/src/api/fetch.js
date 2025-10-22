@@ -1,4 +1,4 @@
-import { blogsUrl, commentsUrl } from "./url"
+import { blogsUrl, commentsUrl, usersUrl } from "./url"
 
 export async function fetchBlogs() {
     try {
@@ -46,5 +46,23 @@ export async function fetchComments() {
         return obj.comments
     } catch(err) {
         console.log("Error at fetchComments: ", err)
+    }
+}
+
+export async function fetchUsers() {
+    try {
+        const response = await fetch(usersUrl, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}` 
+            }
+        })
+        if (!response.ok) {
+            throw new Error("Users fetching failed.")
+        }
+        const obj = await response.json()
+        return obj.users
+    } catch(err) {
+        console.log("Error at fetchUsers: ", err)
     }
 }

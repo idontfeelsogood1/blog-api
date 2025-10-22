@@ -1,4 +1,4 @@
-import { publishUrl, unpublishUrl, addBlogUrl, deleteCommentUrl } from "./url.js"
+import { publishUrl, unpublishUrl, addBlogUrl, deleteCommentUrl, deleteUserUrl } from "./url.js"
 
 export async function changeBlogStatus(blogId, hasPublished) {
     try {
@@ -63,5 +63,21 @@ export async function deleteComment(commentId) {
         }
     } catch(err) {
         console.log("Error at deleteComment: ", err)
+    }
+}
+
+export async function deleteUser(userId) {
+    try {
+        const response = await fetch(`${deleteUserUrl}/${userId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}` 
+            }
+        })
+        if (!response.ok) {
+            throw new Error("Delete user failed.")
+        }
+    } catch(err) {
+        console.log("Error at deleteUser: ", err)
     }
 }
