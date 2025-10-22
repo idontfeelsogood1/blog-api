@@ -68,7 +68,12 @@ async function addBlogPost(req, res) {
     try {
         const authorId = req.user.id
         const { title, body, published } = req.body
-        await db.addBlog(authorId, title, body, published)
+        if (published === "true") {
+            bool = true
+        } else {
+            bool = false
+        }
+        await db.addBlog(authorId, title, body, bool)
         res.sendStatus(200)
     } catch(err) {
         console.log(err)
