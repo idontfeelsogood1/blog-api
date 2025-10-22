@@ -1,4 +1,4 @@
-import { publishUrl, unpublishUrl } from "./url.js"
+import { publishUrl, unpublishUrl, addBlogUrl } from "./url.js"
 
 export async function changeBlogStatus(blogId, hasPublished) {
     try {
@@ -25,5 +25,27 @@ export async function changeBlogStatus(blogId, hasPublished) {
         }
     } catch(err) {
         console.log("Error at changeBlogStatus", err)
+    }
+}
+
+export async function addBlog(title, published, body) {
+    try {
+        const response = await fetch(addBlogUrl, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": 'application/json', 
+            },
+            body: JSON.stringify({
+                title: title,
+                published: published,
+                body: body,
+            })
+        })
+        if (!response.ok) {
+            throw new Error("Add blog failed.")
+        }
+    } catch(err) {
+        console.log("Error at addBlog", err)
     }
 }
