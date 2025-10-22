@@ -15,7 +15,15 @@ async function main() {
 
   // --- 2. Create Users ---
   console.log('Creating users...');
-  const hashedPassword = await bcrypt.hash('password123', 10);
+  const hashedPassword = await bcrypt.hash('12345678', 10);
+
+  const adminUserExample = await prisma.user.create({
+    data: {
+      username: 'adminUserExample',
+      hash: hashedPassword,
+      isWriter: true, // Alice is our main writer
+    },
+  });
 
   const alice = await prisma.user.create({
     data: {
