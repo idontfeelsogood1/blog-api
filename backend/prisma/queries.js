@@ -212,7 +212,20 @@ async function getUserNoSensitive(userId) {
 
 async function getAllComment() {
     try {
-        return await prisma.comment.findMany({})
+        return await prisma.comment.findMany({
+            include: {
+                user: {
+                    select: {
+                        username: true,
+                    }
+                },
+                blog: {
+                    select: {
+                        title: true,
+                    }
+                }
+            }
+        })
     } catch(err) {
         console.log("Error in allCommentGet: ")
         throw new Error(err)
