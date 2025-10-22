@@ -1,13 +1,22 @@
 import style from "./Comments.module.css"
 import { fetchComments } from "../../api/fetch"
 import { useEffect, useState } from "react"
+import { deleteComment } from "../../api/update"
 
 export default function Comments() {
     const [comments, setComments] = useState([])
     const [isLoading, setLoading] = useState(true)
 
-    function deleteComment(commentId) {
-        console.log(commentId)
+    function handleClick(commentId) {
+        const callback = async () => {
+            try {
+                await deleteComment(commentId)
+                window.location.reload()
+            } catch(err) {
+                console.log("Error at Comments in handleClick: ", err)
+            }
+        }   
+        callback()
     }
 
     useEffect(() => {
@@ -53,7 +62,7 @@ export default function Comments() {
                                     <td className={style.author}>{comment.user.username}</td>
                                     <td className={style.blog}>{comment.blog.title}</td>
                                     <td className={style.date}>{formattedDate}</td>
-                                    <td className={style.delete} onClick={() => {deleteComment(comment.id)}}><button>Delete</button></td>
+                                    <td className={style.delete} onClick={() => {handleClick(comment.id)}}><button>Delete</button></td>
                                 </tr>
                             )
                         })}
