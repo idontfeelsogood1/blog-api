@@ -35,8 +35,8 @@ export default function Comments() {
     if (isLoading) {
         return (
             <div>
-                <h1>Blogs</h1>
-                <h2 className={style.loading}>Loading Blogs...</h2>
+                <h1>Comments</h1>
+                <h2 className={style.loading}>Loading Comments...</h2>
             </div>
         )
     } else {
