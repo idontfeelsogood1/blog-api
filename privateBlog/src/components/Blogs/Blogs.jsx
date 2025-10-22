@@ -48,36 +48,38 @@ export default function BlogContainer() {
     } else {
         return (
             <div className={style.container}>
-                <button className={style.addBlog} onClick={handleRedirect}>Add Blog</button>
                 <h1>Blogs</h1>
-                <table className={style.blogContainer}>
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {blogs.map((blog) => {
-                            const formattedDate = blog.createAt.slice(0, 10)
-                            return (
-                                <tr>
-                                    <td className={style.title}>{blog.title}</td>
-                                    <td className={style.author}>{blog.author.username}</td>
-                                    <td className={style.date}>{formattedDate}</td>
-                                    { blog.published 
-                                        ? <td className={style.published}><span>Published</span></td>
-                                        : <td className={style.unpublished}><span>Unpublished</span></td>   
-                                    }
-                                    <td className={style.changeStatus} onClick={() => {handleClick(blog.id, blog.published)}}><button>Change Status</button></td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <button className={style.addBlog} onClick={handleRedirect}>Add Blog</button>
+                <div className={style.tableContainer}>
+                    <table className={style.blogContainer}>
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {blogs.map((blog) => {
+                                const formattedDate = blog.createAt.slice(0, 10)
+                                return (
+                                    <tr>
+                                        <td className={style.title}>{blog.title}</td>
+                                        <td className={style.author}>{blog.author.username}</td>
+                                        <td className={style.date}>{formattedDate}</td>
+                                        { blog.published
+                                            ? <td className={style.published}><span>Published</span></td>
+                                            : <td className={style.unpublished}><span>Unpublished</span></td>
+                                        }
+                                        <td className={style.changeStatus} onClick={() => {handleClick(blog.id, blog.published)}}><button>Change Status</button></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }

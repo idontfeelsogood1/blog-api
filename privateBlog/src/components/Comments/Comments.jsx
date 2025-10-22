@@ -43,31 +43,33 @@ export default function Comments() {
         return (
             <div className={style.container}>
                 <h1>Comments</h1>
-                <table className={style.commentContainer}>
-                    <thead>
-                        <tr>
-                            <th scope="col">Comment</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Blog</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {comments.map((comment) => {
-                            const formattedDate = comment.createAt.slice(0, 10)
-                            return (
-                                <tr>
-                                    <td className={style.body}>{comment.body}</td>
-                                    <td className={style.author}>{comment.user.username}</td>
-                                    <td className={style.blog}>{comment.blog.title}</td>
-                                    <td className={style.date}>{formattedDate}</td>
-                                    <td className={style.delete} onClick={() => {handleClick(comment.id)}}><button>Delete</button></td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <div className={style.commentContainer}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Comment</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Blog</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {comments.map((comment) => {
+                                const formattedDate = comment.createAt.slice(0, 10)
+                                return (
+                                    <tr>
+                                        <td className={style.body}>{comment.body}</td>
+                                        <td className={style.author}>{comment.user.username}</td>
+                                        <td className={style.blog}>{comment.blog.title}</td>
+                                        <td className={style.date}>{formattedDate}</td>
+                                        <td className={style.delete} onClick={() => {handleClick(comment.id)}}><button>Delete</button></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }

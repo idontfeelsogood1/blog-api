@@ -43,31 +43,33 @@ export default function Users() {
         return (
             <div className={style.container}>
                 <h1>Users</h1>
-                <table className={style.usersContainer}>
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Users</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => {
-                            return (
-                                <tr>
-                                    <td className={style.id}>{user.id}</td>
-                                    <td className={style.username}>{user.username}</td>
-                                    { user.isWriter 
-                                        ? <td className={style.role}>Admin</td>
-                                        : <td className={style.role}>Member</td>
-                                    }
-                                    <td className={style.delete} onClick={() => {handleClick(user.id)}}><button>Delete</button></td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                <div className={style.usersContainer}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Users</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.map((user) => {
+                                return (
+                                    <tr>
+                                        <td className={style.id}>{user.id}</td>
+                                        <td className={style.username}>{user.username}</td>
+                                        { user.isWriter
+                                            ? <td className={style.role}>Admin</td>
+                                            : <td className={style.role}>Member</td>
+                                        }
+                                        <td className={style.delete} onClick={() => {handleClick(user.id)}}><button>Delete</button></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
