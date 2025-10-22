@@ -1,18 +1,29 @@
 import { useState, useEffect } from "react"
 import { fetchBlogs } from "../../api/fetch"
+import { changeBlogStatus } from "../../api/update"
 import style from "./Blogs.module.css"
 
 export default function BlogContainer() {
     const [blogs, setBlogs] = useState([])
     const [isLoading, setLoading] = useState(true)
 
+    // ADD FUNCTION TO PUBLISH/UNPUBLISH BLOG ON CLICK
+    function handleClick(blogId, hasPublished) {
+        const callback = async () => {
+            try {
+                await changeBlogStatus(blogId, hasPublished)
+                window.location.reload()
+            } catch(err) {
+                console.log("Error at BlogContainer", err)
+            }
+        }
+        callback()
+    }
+
     useEffect(() => {
         async function populateBlogs() {
             try {
-                // CHANGE THIS TO FETCH ALL BLOGS WITH USERNAME
-                // WORK ON DB TO RETURN A LIST OF BLOGS FIRST
                 const arr = await fetchBlogs()
-
                 setBlogs(arr)
                 setLoading(false)
             } catch(err) {
@@ -48,11 +59,14 @@ export default function BlogContainer() {
                             const formattedDate = blog.createAt.slice(0, 10)
                             return (
                                 <tr>
-                                    <td>{blog.title}</td>
-                                    <td>{blog.author.username}</td>
-                                    <td>{formattedDate}</td>
-                                    <td>Some status</td>
-                                    <td>Some options</td>
+                                    <td className={style.title}>{blog.title}</td>
+                                    <td className={style.author}>{blog.author.username}</td>
+                                    <td className={style.date}>{formattedDate}</td>
+                                    { blog.published 
+                                        ? <td className={style.published}><span>Published</span></td>
+                                        : <td className={style.unpublished}><span>Unpublished</span></td>   
+                                    }
+                                    <td className={style.changeStatus} onClick={() => {handleClick(blog.id, blog.published)}}><button>Change Status</button></td>
                                 </tr>
                             )
                         })}
