@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import { fetchBlogs } from "../../api/fetch"
 import { changeBlogStatus } from "../../api/update"
+import { useNavigate } from "react-router"
 import style from "./Blogs.module.css"
 
 export default function BlogContainer() {
     const [blogs, setBlogs] = useState([])
     const [isLoading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
-    // ADD FUNCTION TO PUBLISH/UNPUBLISH BLOG ON CLICK
     function handleClick(blogId, hasPublished) {
         const callback = async () => {
             try {
@@ -18,6 +19,10 @@ export default function BlogContainer() {
             }
         }
         callback()
+    }
+
+    function handleRedirect() {
+        navigate("/add-blog")
     }
 
     useEffect(() => {
@@ -43,6 +48,7 @@ export default function BlogContainer() {
     } else {
         return (
             <div className={style.container}>
+                <button className={style.addBlog} onClick={handleRedirect}>Add Blog</button>
                 <h1>Blogs</h1>
                 <table className={style.blogContainer}>
                     <thead>
