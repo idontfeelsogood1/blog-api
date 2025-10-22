@@ -2,7 +2,6 @@ import { blogsUrl } from "./url"
 
 export async function fetchBlogs() {
     try {
-        console.log(blogsUrl)
         const response = await fetch(blogsUrl, {
             method: "GET",
             headers: {
@@ -31,3 +30,4 @@ export async function fetchBlog(blogId) {
         console.log("Error at fetchBlog: ", err)
     }
 }
+
