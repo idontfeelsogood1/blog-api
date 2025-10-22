@@ -1,4 +1,4 @@
-import { blogsUrl } from "./url"
+import { blogsUrl, commentsUrl } from "./url"
 
 export async function fetchBlogs() {
     try {
@@ -31,3 +31,20 @@ export async function fetchBlog(blogId) {
     }
 }
 
+export async function fetchComments() {
+    try {
+        const response = await fetch(commentsUrl, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("token")}` 
+            }
+        })
+        if (!response.ok) {
+            throw new Error("Comments fetching failed.")
+        }
+        const obj = await response.json()
+        return obj.comments
+    } catch(err) {
+        console.log("Error at fetchComments: ", err)
+    }
+}
