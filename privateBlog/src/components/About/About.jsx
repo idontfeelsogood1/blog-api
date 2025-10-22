@@ -21,7 +21,7 @@ export default function About() {
             <div className={style.section}>
                 <div className={style.linkContainer}>
                     <h2>API Server</h2>
-                    <h4>Repo: <a href="" target="_blank">Some github link</a></h4>
+                    <h4>Repo: <a href="https://github.com/idontfeelsogood1/blog-api/tree/main/backend" target="_blank">https://github.com/idontfeelsogood1/blog-api/tree/main/backend</a></h4>
                 </div>
                 <div className={style.content}>
                     <p>Building the <a href="https://github.com/idontfeelsogood1/blog-api/tree/main/backend" target="_blank">API server</a> was the focus of this project.
@@ -69,8 +69,8 @@ export default function About() {
             <div className={style.section}>
                 <div className={style.linkContainer}>
                     <h2>User Blog</h2>
-                    <h4>Repo: <a href="" target="_blank">Some github link</a></h4>
-                    <h4>Demo: <a href="" target="_blank">Some demo link</a></h4>
+                    <h4>Repo: <a href="https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog" target="_blank">https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog</a></h4>
+                    <h4>Demo: <a href="https://blogapiuserblog-mnbrsh1gr-idontfeelsogood1s-projects.vercel.app" target="_blank">https://blogapiuserblog-mnbrsh1gr-idontfeelsogood1s-projects.vercel.app</a></h4>
                 </div>
                 <div className={style.content}>
                     <p>This site is the public blog built in <code>React</code>.
@@ -98,8 +98,8 @@ export default function About() {
             <div className={style.section}>
                 <div className={style.linkContainer}>
                     <h2>Admin Dashboard</h2>
-                    <h4>Repo: <a href="" target="_blank">Some github link</a></h4>
-                    <h4>Demo: <a href="" target="_blank">Some demo link</a></h4>
+                    <h4>Repo: <a href="https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog" target="_blank">https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog</a></h4>
+                    <h4>Demo: <a href="https://blog-api-privateblog-bb6njav4p-idontfeelsogood1s-projects.vercel.app" target="_blank">https://blog-api-privateblog-bb6njav4p-idontfeelsogood1s-projects.vercel.app</a></h4>
                 </div>
                 <div className={style.content}>
                     <p>I also used <code>React</code> to create this Admin Dashboard. 
