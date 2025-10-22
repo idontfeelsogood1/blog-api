@@ -148,13 +148,14 @@ async function updateBlogPublish(blogId, isPublish) {
     }
 }
 
-async function addBlog(authorId, title, body) {
+async function addBlog(authorId, title, body, published) {
     try {
         await prisma.blog.create({
             data: {
                 authorId: authorId,
                 title: title,
                 body: body,
+                published: published,
             }
         })
     } catch(err) {
