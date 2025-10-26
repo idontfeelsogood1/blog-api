@@ -1,7 +1,3 @@
-Here is that content formatted as a Markdown README file.
-
----
-
 # Blog API
 
 This is a project created for learning Node.js by building an [API server](https://github.com/idontfeelsogood1/blog-api/tree/main/backend) and two front-end websites to make requests to the API endpoints to view and manage blog posts, comments, and users.
@@ -39,6 +35,7 @@ I also added `express-validator` to validate requests' body data.
 ## User Blog
 
 **Repo:** [https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog](https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog)
+
 **Demo:** [https://cv-maker-99hc.vercel.app/](https://cv-maker-99hc.vercel.app/)
 
 This site is the public blog built in `React`. Any user can view the list of posts and a single post, but to leave a comment on any post they must first create an account and login.
@@ -60,6 +57,7 @@ For displaying the posts, I used HTML/CSS. For making requests, I defined custom
 ## Admin Dashboard
 
 **Repo:** [https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog](https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog)
+
 **Demo:** [https://blog-api-seven-blue.vercel.app/](https://blog-api-seven-blue.vercel.app/)
 
 I also used `React` to create this Admin Dashboard. Only admin users are able to view the pages on this website for managing the posts, comments, and users.
