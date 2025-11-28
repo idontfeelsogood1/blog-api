@@ -1,82 +1,92 @@
-# Blog API
+# 📝 Blog API Project
 
-This is a project created for learning Node.js by building an [API server](https://github.com/idontfeelsogood1/blog-api/tree/main/backend) and two front-end websites to make requests to the API endpoints to view and manage blog posts, comments, and users.
+<div align="center">
 
-The server is built with Node.js and Express. I chose to write both front-end sites in React to get some more practice with the library, specifically in making calls to an API.
+A comprehensive full-stack project built to master **Node.js** and **RESTful API** architecture.
+It consists of a robust backend server serving two distinct React front-end applications: a public blog and a private admin dashboard.
 
-<img width="1053" height="532" alt="image" src="https://github.com/user-attachments/assets/6c6133b9-fa93-47f1-bd60-a9da3cec8fad" />
+[**🔴 User Blog Demo**](https://cv-maker-99hc.vercel.app/) | [**🔵 Admin Dashboard Demo**](https://blog-api-seven-blue.vercel.app/)
 
----
+<img src="https://github.com/user-attachments/assets/6c6133b9-fa93-47f1-bd60-a9da3cec8fad" alt="Project Screenshot" width="800" />
 
-## API Server
-
-**Repo:** [https://github.com/idontfeelsogood1/blog-api/tree/main/backend](https://github.com/idontfeelsogood1/blog-api/tree/main/backend)
-
-Building the [API server](https://github.com/idontfeelsogood1/blog-api/tree/main/backend) was the focus of this project. The endpoints follow RESTful principles, with clear relationships between resources in the URL paths (i.e., `posts/:postId/comments/`) and correct HTTP methods for requested actions. All endpoints return standardized JSON objects.
-
-One of the main learning outcomes of this project was to use JSON Web Tokens (JWTs) for request authentication. So, when a user has a successful login, a JWT token is generated on the server and then sent back to the client, where it is stored in localStorage and applied to the header on certain user- and admin-only requests (like creating and modifying data), which require a JWT in order to provide a successful response. I used `passport`'s JWT strategy to help implement this since I was already using `passport`'s local strategy for user's account creation and logging in.
-
-For my `PostgreSQL` database, I used `Prisma` ORM to define model schema and retrieve/modify data. I had used Prisma on other projects before, but it was helpful to get more experience here on a bigger project, specifically in creating relationships between tables and querying them to retrieve related data (i.e., returning one object with the post data and comments associated with it).
-
-I also added `express-validator` to validate requests' body data.
-
-#### Tools:
-
-* Prisma
-* bcryptjs
-* cors
-* express
-* express-validator
-* jsonwebtoken
-* passport
-* passport-jwt
-* passport-local
+</div>
 
 ---
 
-## User Blog
+## 🏗️ Architecture
 
-**Repo:** [https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog](https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog)
+This project is a monorepo containing three main modules:
+1.  **API Server:** The central backend handling data, authentication, and business logic.
+2.  **User Blog:** A public-facing site for reading posts and leaving comments.
+3.  **Admin Dashboard:** A CMS (Content Management System) for managing posts, comments, and users.
 
-**Demo:** [https://cv-maker-99hc.vercel.app/](https://cv-maker-99hc.vercel.app/)
 
-This site is the public blog built in `React`. Any user can view the list of posts and a single post, but to leave a comment on any post they must first create an account and login.
-
-For displaying the posts, I used HTML/CSS. For making requests, I defined custom hooks called `useFetch` and `useMutation` to retrieve and modify data.
-
-#### Features:
-
-* View a list of posts.
-* Create an account and login to leave a comment on a post.
-
-#### Tools:
-
-* React
-* React Router
 
 ---
 
-## Admin Dashboard
+## 🛠️ Tech Stack
 
-**Repo:** [https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog](https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog)
+**Backend**
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-**Demo:** [https://blog-api-seven-blue.vercel.app/](https://blog-api-seven-blue.vercel.app/)
+**Frontend**
+![React](https://img.shields.io/badge/React-20232a?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-I also used `React` to create this Admin Dashboard. Only admin users are able to view the pages on this website for managing the posts, comments, and users.
+---
 
-The page tables are set up similarly to the post list on the User Blog with pagination handled by request parameters.
+## 🔌 API Server
 
-#### Features:
+**📂 Location:** [`/backend`](https://github.com/idontfeelsogood1/blog-api/tree/main/backend)
 
-* Login with these credentials:
-    * `Username: adminUserExample`
-    * `Password: 12345678`
-* View tables for the posts, comments.
-* Add a new post, give it a title and write your content.
-* Edit a post to publish it or set it as a draft, causing it to show up or not show up on the User Blog site.
-* Delete comments.
+The core of the project. The endpoints follow strict RESTful principles (e.g., `GET /posts/:postId/comments/`) and return standardized JSON responses.
 
-#### Tools:
+### Key Features & Learnings:
+* **Authentication (JWT):** Implemented stateless authentication using **Passport.js** and **JSON Web Tokens**. Upon login, the server issues a token which the client stores and attaches to headers for protected routes (create/edit/delete).
+* **Database (Prisma ORM):** Utilized **Prisma** with **PostgreSQL** to define complex schemas and manage one-to-many relationships (e.g., Users → Posts → Comments).
+* **Validation:** Integrated `express-validator` to sanitize and validate incoming request bodies.
 
-* React
-* React Router
+**Libraries:** `bcryptjs`, `cors`, `express-validator`, `jsonwebtoken`, `passport-jwt`, `passport-local`.
+
+---
+
+## 📖 User Blog (Public Client)
+
+**📂 Location:** [`/userBlog`](https://github.com/idontfeelsogood1/blog-api/tree/main/userBlog)
+**🚀 Live Demo:** [View Site](https://cv-maker-99hc.vercel.app/)
+
+The public-facing interface where visitors can read content. Built with **React** to practice consuming APIs via custom hooks.
+
+### Features:
+* **Read-Only View:** Browse all published blog posts.
+* **Comment System:** Users can register/login to leave comments on posts.
+* **Custom Hooks:** Implemented `useFetch` for data retrieval and `useMutation` for posting data.
+
+---
+
+## 🛡️ Admin Dashboard (CMS)
+
+**📂 Location:** [`/privateBlog`](https://github.com/idontfeelsogood1/blog-api/tree/main/privateBlog)
+**🚀 Live Demo:** [View Dashboard](https://blog-api-seven-blue.vercel.app/)
+
+A protected Single Page Application (SPA) designed for administrators to manage the blog's content. Access is restricted to admin accounts only.
+
+### Features:
+* **Content Management:** Create, Edit, and Delete blog posts.
+* **Publishing Workflow:** Toggle posts between "Draft" and "Published" states.
+* **Moderation:** Delete inappropriate comments.
+* **Pagination:** Data tables support pagination via URL query parameters.
+
+### 🔑 Test Credentials
+To test the admin features, use the following account:
+* **Username:** `adminUserExample`
+* **Password:** `12345678`
+
+    cd privateBlog
+    npm install && npm start
+    ```
