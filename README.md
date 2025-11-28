@@ -4,6 +4,8 @@ This is a project created for learning Node.js by building an [API server](https
 
 The server is built with Node.js and Express. I chose to write both front-end sites in React to get some more practice with the library, specifically in making calls to an API.
 
+<img width="1053" height="532" alt="image" src="https://github.com/user-attachments/assets/6c6133b9-fa93-47f1-bd60-a9da3cec8fad" />
+
 ---
 
 ## API Server
