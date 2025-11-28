@@ -86,7 +86,3 @@ A protected Single Page Application (SPA) designed for administrators to manage 
 To test the admin features, use the following account:
 * **Username:** `adminUserExample`
 * **Password:** `12345678`
-
-    cd privateBlog
-    npm install && npm start
-    ```
